@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Zomato Recommender — Cards</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 22px; background: #f6f7fb; color: #222; }
+    .controls { background: #fff; padding: 18px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 18px; }
+    .label { font-weight: 600; margin-top: 8px; display:block; }
+    .input { padding: 8px; width: 260px; border-radius: 6px; border: 1px solid #ddd; margin-top:6px; }
+    .btn { background:#ff4757; color:#fff; padding:10px 14px; border:none; border-radius:8px; cursor:pointer; margin-top:12px; }
+    .btn:hover { background:#e84118; }
+    .results { display:flex; flex-direction:column; gap:12px; }
+    .card { background: #fff; padding: 14px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-left:6px solid #ff4757; }
+    .title { font-size:18px; font-weight:700; color:#222; }
+    .muted { color:#555; font-size:13px; margin-top:6px; }
+    .meta { margin-top:8px; font-size:13px; color:#333; }
+  </style>
+</head>
+<body>
+  <div class="controls">
+    <h2>🍽️ Zomato Bangalore — Location & Time Aware Recommender</h2>
+    <button class="btn" onclick="autoDetect()">Auto-detect time & location</button>
+
+    <div>
+      <label class="label">Latitude</label>
+      <input id="lat" class="input" placeholder="12.9716">
+    </div>
+
+    <div>
+      <label class="label">Longitude</label>
+      <input id="lon" class="input" placeholder="77.5946">
+    </div>
+
+    <div>
+      <label class="label">Time (HH:MM)</label>
+      <input id="time" class="input" placeholder="12:30">
+    </div>
+
+    <div>
+      <label class="label">Number of recommendations (k)</label>
+      <input id="k" class="input" value="5">
+    </div>
+
+    <div>
+      <button class="btn" onclick="getRecommendations()">Get Recommendations</button>
+    </div>
+  </div>
+
+  <div id="results" class="results"></div>
+
+  <script>
+    function autoDetect() {
+      const now = new Date();
+      const hh = now.getHours().toString().padStart(2,'0');
+      const mm = now.getMinutes().toString().padStart(2,'0');
+      document.getElementById('time').value = `${hh}:${mm}`;
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(pos => {
+          document.getElementById('lat').value = pos.coords.latitude;
+          document.getElementById('lon').value = pos.coords.longitude;
+        }, () => { alert('Location access denied. Please enter coordinates manually.'); });
+      } else {
+        alert('Geolocation not supported in this browser.');
+      }
+    }
+
+    async function getRecommendations() {
+      const lat = document.getElementById('lat').value;
+      const lon = document.getElementById('lon').value;
+      const time = document.getElementById('time').value;
+      const k = document.getElementById('k').value || 5;
+
+      if (!lat || !lon || !time) {
+        alert('Please provide lat, lon and time (or use Auto-detect).');
+        return;
+      }
+
+      const url = `http://127.0.0.1:5000/recommend?lat=${lat}&lon=${lon}&time=${time}&k=${k}`;
+      const container = document.getElementById('results');
+      container.innerHTML = '<div class="card">Loading recommendations…</div>';
+
+      try {
+        const res = await fetch(url);
+        if (!res.ok) {
+          const err = await res.json();
+          container.innerHTML = `<div class="card">Error: ${err.error || res.statusText}</div>`;
+          return;
+        }
+        const data = await res.json();
+
+        if (!Array.isArray(data) || data.length === 0) {
+          container.innerHTML = '<div class="card">No recommendations found.</div>';
+          return;
+        }
+
+        container.innerHTML = "";
+        data.forEach(item => {
+          const name = item.name || "Unknown";
+          const addr = item.full_address || item.full_address === undefined ? item.full_address : "Unknown location";
+          const dist = (item.distance_km || 0).toFixed(2);
+          const score = (item.score || 0).toFixed(3);
+          const time_slot = item.time_slot || "any";
+
+          container.innerHTML += `
+            <div class="card">
+              <div class="title">${escapeHtml(name)}</div>
+              <div class="muted">${escapeHtml(addr)}</div>
+              <div class="meta">Distance: <b>${dist} km</b> • Score: <b>${score}</b> • Slot: <b>${time_slot}</b></div>
+            </div>
+          `;
+        });
+      } catch (err) {
+        console.error(err);
+        container.innerHTML = `<div class="card">Network error. Is the backend running?</div>`;
+      }
+    }
+
+    // simple HTML escaper
+    function escapeHtml(s) {
+      if (!s) return '';
+      return s.replace(/[&<>"']/g, (c) => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      })[c]);
+    }
+  </script>
+</body>
+</html>

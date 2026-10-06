@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MealMind</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Meal<span>Mind</span></h1>
+  <p>What should you eat right now?</p>
+</header>
+
+<main>
+  <section class="panel" id="filters">
+    <label>Cuisines
+      <div id="cuisines" class="chips"></div>
+    </label>
+    <div class="row">
+      <label>Diet
+        <select id="diet">
+          <option value="any">Any</option>
+          <option value="vegetarian">Vegetarian</option>
+          <option value="vegan">Vegan</option>
+          <option value="nonveg">Non-veg</option>
+        </select>
+      </label>
+      <label>Spice
+        <select id="spice">
+          <option value="">Any</option>
+          <option value="0">Mild</option>
+          <option value="1">Light</option>
+          <option value="2">Medium</option>
+          <option value="3">Hot</option>
+        </select>
+      </label>
+      <label>Max price (₹)
+        <input type="number" id="price" min="0" step="50" placeholder="e.g. 300">
+      </label>
+    </div>
+    <div class="row">
+      <label class="check"><input type="checkbox" id="gf"> Gluten-free</label>
+      <label>Location (city or area)
+        <input type="text" id="loc" placeholder="e.g. Koramangala, Bangalore">
+      </label>
+      <label class="check"><input type="checkbox" id="geo"> Use my device location instead</label>
+      <label>Weather
+        <select id="weather">
+          <option value="">Auto / none</option>
+          <option value="rain">Rainy</option>
+          <option value="cold">Cold</option>
+          <option value="hot">Hot</option>
+          <option value="clear">Clear</option>
+        </select>
+      </label>
+    </div>
+    <button id="go">Recommend</button>
+  </section>
+
+  <section id="status"></section>
+  <section id="results" class="grid"></section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

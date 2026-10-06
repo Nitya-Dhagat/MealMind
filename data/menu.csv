@@ -1,0 +1,46 @@
+id,name,restaurant,cuisine,diet,gluten_free,spice,meal_type,temp,price,rating,delivery_min
+1,Paneer Butter Masala,Punjab Grill,north indian,veg,1,2,lunch|dinner,hot,280,4.4,35
+2,Dal Makhani,Punjab Grill,north indian,veg,1,1,lunch|dinner,hot,240,4.5,35
+3,Butter Chicken,Punjab Grill,north indian,nonveg,1,2,lunch|dinner,hot,320,4.6,35
+4,Chicken Biryani,Biryani House,hyderabadi,nonveg,1,3,lunch|dinner,hot,300,4.5,40
+5,Veg Biryani,Biryani House,hyderabadi,veg,1,2,lunch|dinner,hot,220,4.1,40
+6,Masala Dosa,South Spice,south indian,veg,1,1,breakfast|snack,hot,120,4.3,25
+7,Idli Sambar,South Spice,south indian,vegan,1,1,breakfast,hot,90,4.2,25
+8,Medu Vada,South Spice,south indian,vegan,1,1,breakfast|snack,hot,100,4.0,25
+9,Filter Coffee,South Spice,south indian,veg,1,0,breakfast|snack,hot,60,4.4,20
+10,Veg Hakka Noodles,Wok Express,chinese,vegan,0,2,lunch|dinner,hot,180,4.0,30
+11,Chicken Manchurian,Wok Express,chinese,nonveg,0,3,lunch|dinner,hot,240,4.2,30
+12,Hot and Sour Soup,Wok Express,chinese,veg,1,2,dinner|snack,hot,130,4.1,25
+13,Sweet Corn Soup,Wok Express,chinese,veg,1,0,dinner|snack,hot,120,4.0,25
+14,Margherita Pizza,Pizza Cave,italian,veg,0,0,lunch|dinner,hot,300,4.2,30
+15,Farmhouse Pizza,Pizza Cave,italian,veg,0,1,lunch|dinner,hot,380,4.3,30
+16,Chicken Pepperoni Pizza,Pizza Cave,italian,nonveg,0,1,lunch|dinner,hot,420,4.4,30
+17,Penne Arrabbiata,Pasta Lane,italian,vegan,0,2,lunch|dinner,hot,260,4.1,30
+18,Alfredo Pasta,Pasta Lane,italian,veg,0,0,lunch|dinner,hot,290,4.2,30
+19,Veg Burger,Burger Barn,american,veg,0,1,lunch|snack,hot,150,3.9,20
+20,Chicken Burger,Burger Barn,american,nonveg,0,1,lunch|snack,hot,190,4.2,20
+21,French Fries,Burger Barn,american,vegan,1,0,snack,hot,110,4.0,20
+22,Grilled Chicken Salad,Green Bowl,healthy,nonveg,1,0,lunch|dinner,cold,260,4.3,25
+23,Quinoa Veg Bowl,Green Bowl,healthy,vegan,1,0,lunch|dinner,cold,280,4.2,25
+24,Greek Salad,Green Bowl,healthy,veg,1,0,lunch|snack,cold,220,4.1,25
+25,Fruit Smoothie Bowl,Green Bowl,healthy,vegan,1,0,breakfast|snack,cold,200,4.3,20
+26,Vanilla Ice Cream,Scoops,dessert,veg,1,0,snack|dinner,cold,120,4.5,20
+27,Chocolate Brownie,Scoops,dessert,veg,0,0,snack|dinner,hot,150,4.4,20
+28,Gulab Jamun,Mithai Mahal,dessert,veg,0,0,snack|dinner,hot,100,4.5,25
+29,Cold Coffee,Cafe Brew,beverage,veg,1,0,snack|breakfast,cold,140,4.3,20
+30,Masala Chai,Cafe Brew,beverage,veg,1,0,breakfast|snack,hot,50,4.4,15
+31,Mango Lassi,Mithai Mahal,beverage,veg,1,0,lunch|snack,cold,90,4.4,20
+32,Chole Bhature,Punjab Grill,north indian,veg,0,2,breakfast|lunch,hot,170,4.4,30
+33,Tandoori Chicken,Tandoor Tales,north indian,nonveg,1,2,dinner,hot,340,4.5,40
+34,Paneer Tikka,Tandoor Tales,north indian,veg,1,2,snack|dinner,hot,260,4.4,35
+35,Hara Bhara Kebab,Tandoor Tales,north indian,vegan,1,1,snack|dinner,hot,220,4.0,35
+36,Rajma Chawal,Home Kitchen,north indian,vegan,1,1,lunch,hot,160,4.2,30
+37,Curd Rice,Home Kitchen,south indian,veg,1,0,lunch,cold,110,4.1,25
+38,Sushi Platter,Tokyo Bites,japanese,nonveg,1,0,lunch|dinner,cold,550,4.3,45
+39,Veg Ramen,Tokyo Bites,japanese,vegan,0,1,dinner,hot,360,4.2,40
+40,Pav Bhaji,Street Chaat,street food,veg,0,2,snack|dinner,hot,140,4.4,25
+41,Pani Puri,Street Chaat,street food,vegan,0,2,snack,cold,70,4.5,20
+42,Vada Pav,Street Chaat,street food,vegan,0,2,snack|breakfast,hot,50,4.3,20
+43,Chicken Tikka Roll,Roll Junction,street food,nonveg,0,2,lunch|snack,hot,160,4.2,25
+44,Mushroom Soup,Green Bowl,healthy,veg,1,0,dinner|snack,hot,150,4.0,25
+45,Fish Curry Rice,Coastal Catch,coastal,nonveg,1,2,lunch|dinner,hot,330,4.4,40
